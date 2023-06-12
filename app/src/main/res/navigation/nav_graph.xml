@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/clipperFragment">
+
+    <fragment
+        android:id="@+id/clipperFragment"
+        android:name="com.genglxy.clipperboard.ui.clipper.ClipperFragment"
+        android:label="ClipperFragment"
+        tools:layout="@layout/fragment_clipper">
+        <action
+            android:id="@+id/openEditor"
+            app:destination="@id/editorFragment" />
+        <action
+            android:id="@+id/openHeightPicker"
+            app:destination="@id/heightPickerFragment" />
+        <action
+            android:id="@+id/openResult"
+            app:destination="@id/resultFragment" />
+        <action
+            android:id="@+id/openDeleteDialog"
+            app:destination="@id/deleteDialogFragment" />
+        <action
+            android:id="@+id/openHistory"
+            app:destination="@id/historyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editorFragment"
+        android:name="com.genglxy.clipperboard.ui.editor.EditorFragment"
+        android:label="EditorFragment"
+        tools:layout="@layout/fragment_editor">
+        <argument
+            android:name="photo"
+            app:argType="com.genglxy.clipperboard.logic.model.Photo" />
+        <argument
+            android:name="fixedHeight"
+            app:argType="integer[]" />
+        <argument
+            android:name="index"
+            app:argType="integer" />
+    </fragment>
+    <dialog
+        android:id="@+id/heightPickerFragment"
+        android:name="com.genglxy.clipperboard.ui.clipper.HeightPickerFragment"
+        android:label="HeightPickerFragment" >
+        <argument
+            android:name="fixedHeight"
+            app:argType="integer[]" />
+        <argument
+            android:name="index"
+            app:argType="integer" />
+    </dialog>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.genglxy.clipperboard.ui.result.ResultFragment"
+        android:label="ResultFragment"
+        tools:layout="@layout/fragment_result">
+        <argument
+            android:name="photoList"
+            app:argType="com.genglxy.clipperboard.logic.model.Photo[]" />
+    </fragment>
+    <dialog
+        android:id="@+id/deleteDialogFragment"
+        android:name="com.genglxy.clipperboard.ui.clipper.DeleteDialogFragment"
+        android:label="DeleteDialogFragment" >
+        <argument
+            android:name="position"
+            app:argType="integer" />
+    </dialog>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.genglxy.clipperboard.ui.history.HistoryFragment"
+        android:label="HistoryFragment" />
+</navigation>

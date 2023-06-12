@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/editor_image_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/outlined_text_field"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/white"
+        tools:src="@drawable/add_icon" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/editor_image_view"
+        app:layout_constraintTop_toTopOf="@id/editor_image_view">
+
+        <View
+            android:id="@+id/gray_mask"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:alpha="0.5"
+            android:background="@color/black" />
+
+        <View
+            android:id="@+id/invisible_mask"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/slider"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="1000"
+        app:layout_constraintBottom_toBottomOf="@+id/apply"
+        app:layout_constraintEnd_toStartOf="@id/outlined_text_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/apply"
+        app:tickVisible="false"
+        tools:background="@color/white" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/outlined_text_field"
+        style="?attr/textInputFilledStyle"
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:hint="@string/label"
+        app:layout_constraintBottom_toTopOf="@+id/apply"
+        app:layout_constraintEnd_toEndOf="@+id/apply"
+        app:layout_constraintStart_toStartOf="@+id/apply">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="23" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fixed_height_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/outlined_text_field"
+        app:layout_constraintEnd_toStartOf="@+id/outlined_text_field"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/outlined_text_field"
+        tools:listitem="@layout/fixed_height_item" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/apply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Apply"
+        app:icon="@drawable/switch_height_icon"
+        app:iconPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/warn_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Please enter a valid pixel count."
+        android:textColor="?attr/colorError"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/outlined_text_field"
+        app:layout_constraintEnd_toStartOf="@id/apply"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/outlined_text_field"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
